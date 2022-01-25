@@ -1,0 +1,292 @@
+@import './mixins';
+
+.navbar-container {
+  width: 100%;
+  height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  
+  
+  @include navbar{
+    padding: 1rem 2rem 0;
+  }
+  
+  @include desktop {
+    position: relative;
+    margin-bottom: 5rem;
+
+    &::before {
+      content: '';
+      background-color: rgba(0, 0, 0, 0.1);
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: -10px;
+    }
+  }
+    
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .menu-button-container {
+      list-style: none;
+    }
+    
+    @include navbar{
+
+      .menu-button-container {
+        display: none;
+  
+        list-style: none;
+      }
+
+      &.active {
+        background-color: white;
+        min-width: 180px;
+        width: 65%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+  
+        padding: 2rem;
+
+        z-index: 2;
+  
+        .menu-button-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+  
+          margin-top: 2rem;
+  
+          .menu-button {
+            font-size: clamp(1.1rem, 5vw, 1.2rem);
+            font-weight: 700;
+            margin: 0.865rem 0;
+  
+            cursor: pointer;
+
+            transition: color 200ms;
+
+            &:hover, &:focus {
+              color: hsl(26, 100%, 55%);
+            }
+
+            
+          }
+        }
+      }
+    }
+
+    @include desktop {
+      .menu-button-container {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .menu-button {
+          color: hsl(219, 9%, 45%);
+          font-size: 0.9rem;
+          font-weight: 400;
+          margin: 0 1rem;
+          cursor: pointer;
+
+          position: relative;
+
+          transition: 100ms;
+
+          &::after {
+            content: '';
+            background: transparent;
+            width: 100%;
+            height: 3px;
+            position: absolute;
+            bottom: -250%;
+            left: 0;
+
+            transition: 300ms;
+          }
+
+          &:hover {
+            color: hsl(220, 13%, 13%);
+          }
+
+          &:hover::after {
+            background: hsl(26, 100%, 55%);
+          }
+        }
+      }
+    }
+  }
+
+  .menu-logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-right: 1rem;
+
+    @include desktop {
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+      margin-right: 1rem;
+    }
+
+    .menu-icon-image {
+      max-width: 15px;
+      min-width: 15px;
+      width: 100%;
+
+      cursor: pointer;
+
+      transition: filter 200ms;
+
+      &:hover {
+        filter: brightness(0);
+      }
+
+      @include desktop {
+        display: none;
+      }
+    }
+
+    .logo {
+      max-width: 110px;
+      min-width: 80px;
+      width: 80%;
+
+      margin: 0 2rem 0.25rem 1rem;
+
+      @include desktop {
+        margin: 0 2rem 0.25rem 0;
+      }
+
+      @include navbar {
+        margin: 0 0rem 0.25rem 1.5rem;
+      }
+
+      transition: 200ms;
+    }
+  }
+
+  .menu-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .cart-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include desktop {
+        position: relative;
+      }
+
+      .cart-icon {
+        max-width: 22px;
+        width: 100%;
+    
+        margin: 1rem 1.5rem;
+    
+        cursor: pointer;
+        
+        transition: filter 200ms;
+  
+        &:hover {
+          filter: brightness(0);
+        }
+      }
+
+      .cart-content {
+        display: none;
+      }
+
+      &.active {
+        .cart-content {
+          background-color: white;
+          max-width: 600px;
+          width: 90%;
+          min-height: 300px;
+          height: auto; 
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -350px;
+          display: flex;
+          margin-left: auto; 
+          margin-right: auto;
+  
+          padding: 1rem 2rem;
+  
+          border: 1px solid black;
+  
+          border-radius: 0.5rem;
+
+          @include desktop {
+            width: 500%;
+            left: -350%;
+          }
+          
+          h1 {
+            width: 100%;
+            height: 50px;
+            font-size: clamp(1.05rem, 5vw, 1.11rem);
+            margin: 1rem 0 2rem;
+  
+            position: relative;
+  
+            &::after {
+              content: '';
+              bottom: 0;
+              left: 0;
+              position: absolute;
+              width: 100%;
+              height: 1px;
+              background: black;
+            }
+          }
+        
+        }
+      }
+    }
+
+    .user-avatar {
+      max-width: 25px;
+      min-width: 20px;
+      width: 30%;
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      transition: 200ms;
+
+      outline: 2px solid transparent;
+
+      @include tablet {
+        max-width: 50px;
+      }
+
+      @include desktop {
+        max-width: 70px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        outline-color: hsl(26, 100%, 55%);
+      }
+    }
+  }
+}

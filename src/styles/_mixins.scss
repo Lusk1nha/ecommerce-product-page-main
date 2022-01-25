@@ -1,0 +1,29 @@
+$desktop-screen-width: 900px;
+$tablet-screen-width: 500px;
+
+@mixin navbar {
+  @media screen and (max-width: #{$desktop-screen-width}) {
+    @content
+  }
+};
+
+
+@mixin desktop {
+  @media screen and (min-width: #{$desktop-screen-width}) {
+    @content
+  }
+};
+
+@mixin tablet {
+  @media screen and (min-width: #{$tablet-screen-width}) {
+    @content
+  }
+};
+
+@mixin ImageDefault {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: 50% 50%; 
+}
